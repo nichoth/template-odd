@@ -3,7 +3,7 @@ run-name: testing in node
 on: [push]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
 
     strategy:
@@ -29,4 +29,4 @@ jobs:
           CI: true
       - name: Run tests
         run: |
-          npm test
+          npm run build && npm run test:node && npm run build-tests:browser && xvfb-run --server-args="-screen 0 1920x1080x24" npm run test-ci:browser
