@@ -1,5 +1,6 @@
 import { test } from '@socketsupply/tapzero'
-import { Program } from '@oddjs/odd'
+import { Program, Session } from '@oddjs/odd'
+import { createUsername } from '@ssc-hermes/profile'
 import { example } from '../dist/index.js'
 
 // @ts-ignore
@@ -21,3 +22,35 @@ test('example', t => {
     const random = example(program.components.crypto)
     t.ok(random, 'should return something')
 })
+
+let alicesUsername:string
+let session:Session|null
+test('create a user', async t => {
+    alicesUsername = await createUsername(program.components.crypto)
+
+    await program.auth.register({ username: alicesUsername })
+    session = await program.auth.session()
+    const wnfs = session?.fs
+    if (!wnfs) throw new Error('not wnfs')
+
+    if (!(await program.fileSystem.hasPublicExchangeKey(wnfs))) {
+        await program.fileSystem.addPublicExchangeKey(wnfs)
+    }
+
+    await wnfs.publish()
+    const published = await once(program, 'fileSystem:publish')
+    t.ok(published, 'should emit a publish event')
+})
+
+function once (bus:Program, eventName:string) {
+    return new Promise(resolve => {
+        // @ts-ignore
+        bus.on(eventName, onEvent)
+
+        function onEvent (ev) {
+            resolve(ev)
+            // @ts-ignore
+            bus.off(eventName, onEvent)
+        }
+    })
+}
