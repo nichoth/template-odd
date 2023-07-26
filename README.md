@@ -18,7 +18,7 @@ npm run test:browser
 ```
 This will use [tape-run](https://github.com/juliangruber/tape-run) to run tests in a browser environment, but stream output to stdout.
 
-In [test/index.browser.ts](test/index.browser.js), you can see an example of listening for a 'publish' event on wnfs:
+In [test/index.browser.ts](test/index.browser.ts), you can see an example of listening for a 'publish' event on wnfs:
 
 ```js
 await wnfs.publish()
