@@ -1,6 +1,7 @@
 import { test } from '@socketsupply/tapzero'
 import * as odd from '@oddjs/odd'
 import { components } from '@ssc-hermes/node-components'
+import { example } from '../dist'
 
 let program:odd.Program
 
@@ -11,4 +12,9 @@ test('setup', async t => {
     }, components)
 
     t.ok(program, 'create a program')
+})
+
+test('example', t => {
+    const random = example(program.components.crypto)
+    t.ok(random, 'should return something')
 })

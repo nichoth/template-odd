@@ -17,7 +17,7 @@ test('setup', async t => {
     t.ok(program, 'should create a program')
 })
 
-test('example', async t => {
+test('example', t => {
     const random = example(program.components.crypto)
     t.ok(random, 'should return something')
 })
