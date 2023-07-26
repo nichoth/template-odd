@@ -1,5 +1,14 @@
+import { test } from '@socketsupply/tapzero'
+import * as odd from '@oddjs/odd'
+import { components } from '@ssc-hermes/node-components'
+
+let program:odd.Program
+
 test('setup', async t => {
-    const APP_INFO = { name: 'testing', creator: 'test' }
-    wnfsPost = await WnfsPost.create(wn, APP_INFO)
-    t.ok(wnfsPost, 'create a wnfs instance')
+    program = await odd.assemble({
+        namespace: { creator: 'test', name: 'testing' },
+        debug: false
+    }, components)
+
+    t.ok(program, 'create a program')
 })
