@@ -22,7 +22,7 @@ npm test
 
 ### test in a browser
 ```
-npm run test:browser
+npm run build && npm run test:browser
 ```
 This will use [tape-run](https://github.com/juliangruber/tape-run) to run tests in a browser environment, but stream output to stdout.
 
@@ -36,7 +36,7 @@ t.ok(published, 'should emit a publish event')
 
 ### test in node
 ```
-npm run test:node
+npm run build && npm run test:node
 ```
 This uses [node-components](https://github.com/ssc-hermes/node-components) to create an instance of `odd` that will run in node.
 
