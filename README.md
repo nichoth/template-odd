@@ -10,7 +10,7 @@ An example of [ODD](https://github.com/oddsdk/ts-odd) + tests in both node and a
 * automatically publish to npm on any version change
 
 ## use
-Use Github's "template" button in the GUI, then `npm init`.
+Use Github's "template" button in the GUI, then `npm init`, and change the URL for the test svg file.
 
 ## test
 
