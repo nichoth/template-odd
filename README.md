@@ -8,6 +8,7 @@ An example of [ODD](https://github.com/oddsdk/ts-odd) with tests in both node an
 * ignore compiled code in git, but publish to npm (see [.npmignore](.npmignore))
 * automatically build before publishing. See `prepublishOnly` npm hook.
 * automatically publish to npm on any version change via `postpublish` npm hook.
+* use Github's CI to run tests on any push event
 
 ## use
 Use Github's "template" button in the GUI, then `npm init`, and change the URL for the test svg file, and edit this README file.
