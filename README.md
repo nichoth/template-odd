@@ -2,6 +2,13 @@
 
 An example of [ODD](https://github.com/oddsdk/ts-odd) + tests in both node and a browser environment.
 
+* lint with [standardx](https://github.com/standard/standardx)
+* test in node with [node-components](https://github.com/ssc-hermes/node-components)
+* test in browser with [tape-run](https://github.com/juliangruber/tape-run)
+* ignore compiled code in git, but publish to npm because `!dist` is in `.npmignore`
+* automatically build before publishing. See `prepublishOnly` script.
+* automatically publish to npm on any version change
+
 ## use
 Use Github's "template" button in the GUI, then `npm init`.
 
